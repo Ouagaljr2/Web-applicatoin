@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+
+	<!-- Bean pour la classe Collaborateur -->
+	<bean id="c" class="tp1air1.Collaborateur">
+		<property name="nom" value="Jean Dupont" />
+	</bean>
+
+	<!-- Bean pour la classe Periode -->
+	<bean id="p" class="tp1air1.Periode">
+		<property name="dateDebut" value="2024-11-10" />
+		<property name="nbJours" value="5" />
+	</bean>
+
+	<!-- Bean pour la classe DemandeConge avec injection des beans Collaborateur et Periode -->
+	<!-- <bean id="demandeConge" class="tp1air1.DemandeConge" scope="prototype">
+		 pour qu'un nouveau bean soit instancié à chaque demande, vous devez 
+		 ajouter l'attribut scope="prototype" dans la définition des beans dans -->
+		 
+	<bean id="demandeConge" class="tp1air1.DemandeConge" scope="prototype">
+		<property name="collaborateur" ref="c" />
+		<property name="periode" ref="p" />
+	</bean>
+
+	<!-- l'ordre importe peut pour le constructeur spring est capable de mettre la
+	 ou il faut automatiquement grace au type mais si on met deux fois le meme type !!!Probleme -->
+	<bean id="demandeCongeSansModificateurs" class="tp1air1.DemandeCongeSansModificateurs">
+		<constructor-arg ref="p" />
+		<constructor-arg ref="c" />
+	</bean>
+
+</beans>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+
+	<!-- Bean pour la classe Collaborateur -->
+	<bean id="c" class="tp1air1.Collaborateur">
+		<property name="nom" value="Jean Dupont" />
+		
+	</bean>
+	
+	<!-- deuxieme bean pour le test cela va causer un probème car spring ne saura pas lequel des collaborateur utiliser c ou c2 
+	
+	<bean id="c2" class="tp1air1.Collaborateur">
+    	<property name="nom" value="Mariella Marie"/>
+	</bean>
+	
+	-->
+
+	<!-- Bean pour la classe Periode -->
+	<bean id="p" class="tp1air1.Periode">
+		<property name="dateDebut" value="2024-11-10" />
+		<property name="nbJours" value="5" />
+	</bean>
+
+	<!-- Bean DemandeConge avec injection automatique byType -->
+	<bean id="demandeConge" class="tp1air1.DemandeConge" autowire="byType" />
+	
+	<!-- Bean DemandeConge avec injection automatique byName
+	
+	<bean id="demandeConge" class="tp1air1.DemandeConge" autowire="byName" />
+	 
+	 pour que le byName marche il faut que
+	 les id des bean soient les meme que les noms des attributs dans les classes concernées ici demandeConge
+	 typiquement: 
+	 
+	  <bean id="collaborateur " class="tp1air1.Collaborateur">
+		<property name="nom" value="Jean" />
+		<property name="prenom" value="Dupont"/>
+		
+	</bean>
+	 ici collaborateur est le nom definit dans l'attribut
+	
+	 -->
+
+	
+	<!-- Bean DemandeCongeSansModificateurs avec injection automatique par constructeur -->
+	<bean id="demandeCongeSansModificateurs" class="tp1air1.DemandeCongeSansModificateurs" autowire="constructor" />
+
+
+</beans>

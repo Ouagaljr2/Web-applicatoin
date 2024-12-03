@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	
+	<!-- Deuxieme fichier de configuration pour tester les avec les injections automatiues avec les annotaions @ -->
+
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />	
+	
+	<!-- Bean pour la classe Collaborateur -->
+	<bean id="collaborateur" class="tp1air1.Collaborateur">
+		<property name="nom" value="Jean Dupont" />	
+	</bean>
+	
+	<!-- Bean pour la classe Periode -->
+	<bean id="p" class="tp1air1.Periode">
+		<property name="dateDebut" value="2024-11-10" />
+		<property name="nbJours" value="5" />
+	</bean>
+
+	<!-- Bean DemandeConge avec injection automatique byType -->
+	<bean id="demandeConge" class="tp1air1.DemandeConge"/>
+	
+	
+	<!-- Bean DemandeCongeSansModificateurs avec injection automatique par constructeur -->
+	<bean id="demandeCongeSansModificateurs" class="tp1air1.DemandeCongeSansModificateurs" />
+
+
+
+</beans>
