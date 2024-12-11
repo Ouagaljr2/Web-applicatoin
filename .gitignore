@@ -1,3 +1,5 @@
 *.class
 *.me*
 *test*
+target
+
